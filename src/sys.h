@@ -81,6 +81,11 @@
 
 #ifndef _PTR_T
 # define _PTR_T
+
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
 typedef void	*ptr_t;
 #endif
 
@@ -93,22 +98,22 @@ typedef void	*ioctl_t;
 
 #ifndef HAVE_STRLCAT
 #define	strlcat libedit_strlcat
-size_t	strlcat(char *dst, const char *src, size_t size);
+EXPORT_API size_t	strlcat(char *dst, const char *src, size_t size);
 #endif
 
 #ifndef HAVE_STRLCPY
 #define	strlcpy libedit_strlcpy
-size_t	strlcpy(char *dst, const char *src, size_t size);
+EXPORT_API size_t	strlcpy(char *dst, const char *src, size_t size);
 #endif
 
 #ifndef HAVE_FGETLN
 #define	fgetln libedit_fgetln
-char	*fgetln(FILE *fp, size_t *len);
+EXPORT_API char	*fgetln(FILE *fp, size_t *len);
 #endif
 
 #ifndef HAVE_WCSDUP
 #include <wchar.h>
-wchar_t *wcsdup(const wchar_t *);
+EXPORT_API wchar_t *wcsdup(const wchar_t *);
 #endif
 
 #ifndef _DIAGASSERT

@@ -42,6 +42,11 @@
 
 #include "histedit.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef struct el_search_t {
 	Char	*patbuf;		/* The pattern buffer		*/
 	size_t	 patlen;		/* Length of the pattern buffer	*/
@@ -57,10 +62,10 @@ protected int		search_init(EditLine *);
 protected void		search_end(EditLine *);
 protected int		c_hmatch(EditLine *, const Char *);
 protected void		c_setpat(EditLine *);
-protected el_action_t	ce_inc_search(EditLine *, int);
-protected el_action_t	cv_search(EditLine *, int);
-protected el_action_t	ce_search_line(EditLine *, int);
-protected el_action_t	cv_repeat_srch(EditLine *, Int);
-protected el_action_t	cv_csearch(EditLine *, int, Int, int, int);
+EXPORT_API protected el_action_t	ce_inc_search(EditLine *, int);
+EXPORT_API protected el_action_t	cv_search(EditLine *, int);
+EXPORT_API protected el_action_t	ce_search_line(EditLine *, int);
+EXPORT_API protected el_action_t	cv_repeat_srch(EditLine *, Int);
+EXPORT_API protected el_action_t	cv_csearch(EditLine *, int, Int, int, int);
 
 #endif /* _h_el_search */

@@ -34,6 +34,11 @@
 #include <sys/types.h>
 #include <stdio.h>
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 /* list of readline stuff supported by editline library's readline wrapper */
 
 /* typedefs */
@@ -96,127 +101,127 @@ typedef KEYMAP_ENTRY *Keymap;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char	*rl_library_version;
-extern int 		rl_readline_version; 
-extern char		*rl_readline_name;
-extern FILE		*rl_instream;
-extern FILE		*rl_outstream;
-extern char		*rl_line_buffer;
-extern int		 rl_point, rl_end;
-extern int		 history_base, history_length;
-extern int		 max_input_history;
-extern char		*rl_basic_word_break_characters;
-extern char		*rl_completer_word_break_characters;
-extern char		*rl_completer_quote_characters;
-extern Function		*rl_completion_entry_function;
-extern char		*(*rl_completion_word_break_hook)(void);
-extern CPPFunction	*rl_attempted_completion_function;
-extern int		 rl_attempted_completion_over;
-extern int		rl_completion_type;
-extern int		rl_completion_query_items;
-extern char		*rl_special_prefixes;
-extern int		rl_completion_append_character;
-extern int		rl_inhibit_completion;
-extern Function		*rl_pre_input_hook;
-extern Function		*rl_startup_hook;
-extern char		*rl_terminal_name;
-extern int		rl_already_prompted;
-extern char		*rl_prompt;
+EXPORT_API extern const char	*rl_library_version;
+EXPORT_API extern int 		rl_readline_version; 
+EXPORT_API extern char		*rl_readline_name;
+EXPORT_API extern FILE		*rl_instream;
+EXPORT_API extern FILE		*rl_outstream;
+EXPORT_API extern char		*rl_line_buffer;
+EXPORT_API EXPORT_API extern int		 rl_point, rl_end;
+EXPORT_API EXPORT_API extern int		 history_base, history_length;
+EXPORT_API extern int		 max_input_history;
+EXPORT_API extern char		*rl_basic_word_break_characters;
+EXPORT_API extern char		*rl_completer_word_break_characters;
+EXPORT_API extern char		*rl_completer_quote_characters;
+EXPORT_API extern Function		*rl_completion_entry_function;
+EXPORT_API extern char		*(*rl_completion_word_break_hook)(void);
+EXPORT_API extern CPPFunction	*rl_attempted_completion_function;
+EXPORT_API extern int		 rl_attempted_completion_over;
+EXPORT_API extern int		rl_completion_type;
+EXPORT_API extern int		rl_completion_query_items;
+EXPORT_API extern char		*rl_special_prefixes;
+EXPORT_API extern int		rl_completion_append_character;
+EXPORT_API extern int		rl_inhibit_completion;
+EXPORT_API extern Function		*rl_pre_input_hook;
+EXPORT_API extern Function		*rl_startup_hook;
+EXPORT_API extern char		*rl_terminal_name;
+EXPORT_API extern int		rl_already_prompted;
+EXPORT_API extern char		*rl_prompt;
 /*
  * The following is not implemented
  */
-extern int		rl_catch_signals;
-extern int		rl_catch_sigwinch;
-extern KEYMAP_ENTRY_ARRAY emacs_standard_keymap,
+EXPORT_API extern int		rl_catch_signals;
+EXPORT_API extern int		rl_catch_sigwinch;
+EXPORT_API EXPORT_API EXPORT_API extern KEYMAP_ENTRY_ARRAY emacs_standard_keymap,
 			emacs_meta_keymap,
 			emacs_ctlx_keymap;
-extern int		rl_filename_completion_desired;
-extern int		rl_ignore_completion_duplicates;
-extern int		(*rl_getc_function)(FILE *);
-extern VFunction	*rl_redisplay_function;
-extern VFunction	*rl_completion_display_matches_hook;
-extern VFunction	*rl_prep_term_function;
-extern VFunction	*rl_deprep_term_function;
-extern int		readline_echoing_p;
-extern int		_rl_print_completions_horizontally;
+EXPORT_API extern int		rl_filename_completion_desired;
+EXPORT_API extern int		rl_ignore_completion_duplicates;
+EXPORT_API extern int		(*rl_getc_function)(FILE *);
+EXPORT_API extern VFunction	*rl_redisplay_function;
+EXPORT_API extern VFunction	*rl_completion_display_matches_hook;
+EXPORT_API extern VFunction	*rl_prep_term_function;
+EXPORT_API extern VFunction	*rl_deprep_term_function;
+EXPORT_API extern int		readline_echoing_p;
+EXPORT_API extern int		_rl_print_completions_horizontally;
 
 /* supported functions */
-char		*readline(const char *);
-int		 rl_initialize(void);
+EXPORT_API char		*readline(const char *);
+EXPORT_API int		 rl_initialize(void);
 
-void		 using_history(void);
-int		 add_history(const char *);
-void		 clear_history(void);
-void		 stifle_history(int);
-int		 unstifle_history(void);
-int		 history_is_stifled(void);
-int		 where_history(void);
-HIST_ENTRY	*current_history(void);
-HIST_ENTRY	*history_get(int);
-HIST_ENTRY	*remove_history(int);
-HIST_ENTRY	*replace_history_entry(int, const char *, histdata_t);
-int		 history_total_bytes(void);
-int		 history_set_pos(int);
-HIST_ENTRY	*previous_history(void);
-HIST_ENTRY	*next_history(void);
-int		 history_search(const char *, int);
-int		 history_search_prefix(const char *, int);
-int		 history_search_pos(const char *, int, int);
-int		 read_history(const char *);
-int		 write_history(const char *);
-int		 history_truncate_file (const char *, int);
-int		 history_expand(char *, char **);
-char	       **history_tokenize(const char *);
-const char	*get_history_event(const char *, int *, int);
-char		*history_arg_extract(int, int, const char *);
+EXPORT_API void		 using_history(void);
+EXPORT_API int		 add_history(const char *);
+EXPORT_API void		 clear_history(void);
+EXPORT_API void		 stifle_history(int);
+EXPORT_API int		 unstifle_history(void);
+EXPORT_API int		 history_is_stifled(void);
+EXPORT_API int		 where_history(void);
+EXPORT_API HIST_ENTRY	*current_history(void);
+EXPORT_API HIST_ENTRY	*history_get(int);
+EXPORT_API HIST_ENTRY	*remove_history(int);
+EXPORT_API HIST_ENTRY	*replace_history_entry(int, const char *, histdata_t);
+EXPORT_API int		 history_total_bytes(void);
+EXPORT_API int		 history_set_pos(int);
+EXPORT_API HIST_ENTRY	*previous_history(void);
+EXPORT_API HIST_ENTRY	*next_history(void);
+EXPORT_API int		 history_search(const char *, int);
+EXPORT_API int		 history_search_prefix(const char *, int);
+EXPORT_API int		 history_search_pos(const char *, int, int);
+EXPORT_API int		 read_history(const char *);
+EXPORT_API int		 write_history(const char *);
+EXPORT_API int		 history_truncate_file (const char *, int);
+EXPORT_API int		 history_expand(char *, char **);
+EXPORT_API char	       **history_tokenize(const char *);
+EXPORT_API const char	*get_history_event(const char *, int *, int);
+EXPORT_API char		*history_arg_extract(int, int, const char *);
 
-char		*tilde_expand(char *);
-char		*filename_completion_function(const char *, int);
-char		*username_completion_function(const char *, int);
-int		 rl_complete(int, int);
-int		 rl_read_key(void);
-char	       **completion_matches(const char *, CPFunction *);
-void		 rl_display_match_list(char **, int, int);
+EXPORT_API char		*tilde_expand(char *);
+EXPORT_API char		*filename_completion_function(const char *, int);
+EXPORT_API char		*username_completion_function(const char *, int);
+EXPORT_API int		 rl_complete(int, int);
+EXPORT_API int		 rl_read_key(void);
+EXPORT_API char	       **completion_matches(const char *, CPFunction *);
+EXPORT_API void		 rl_display_match_list(char **, int, int);
 
-int		 rl_insert(int, int);
-int		 rl_insert_text(const char *);
-void		 rl_reset_terminal(const char *);
-int		 rl_bind_key(int, rl_command_func_t *);
-int		 rl_newline(int, int);
-void		 rl_callback_read_char(void);
-void		 rl_callback_handler_install(const char *, VCPFunction *);
-void		 rl_callback_handler_remove(void);
-void		 rl_redisplay(void);
-int		 rl_get_previous_history(int, int);
-void		 rl_prep_terminal(int);
-void		 rl_deprep_terminal(void);
-int		 rl_read_init_file(const char *);
-int		 rl_parse_and_bind(const char *);
-int		 rl_variable_bind(const char *, const char *);
-void		 rl_stuff_char(int);
-int		 rl_add_defun(const char *, Function *, int);
-HISTORY_STATE	*history_get_history_state(void);
-void		 rl_get_screen_size(int *, int *);
-void		 rl_set_screen_size(int, int);
-char 		*rl_filename_completion_function (const char *, int);
-int		 _rl_abort_internal(void);
-int		 _rl_qsort_string_compare(char **, char **);
-char 	       **rl_completion_matches(const char *, rl_compentry_func_t *);
-void		 rl_forced_update_display(void);
-int		 rl_set_prompt(const char *);
-int		 rl_on_new_line(void);
+EXPORT_API int		 rl_insert(int, int);
+EXPORT_API int		 rl_insert_text(const char *);
+EXPORT_API void		 rl_reset_terminal(const char *);
+EXPORT_API int		 rl_bind_key(int, rl_command_func_t *);
+EXPORT_API int		 rl_newline(int, int);
+EXPORT_API void		 rl_callback_read_char(void);
+EXPORT_API void		 rl_callback_handler_install(const char *, VCPFunction *);
+EXPORT_API void		 rl_callback_handler_remove(void);
+EXPORT_API void		 rl_redisplay(void);
+EXPORT_API int		 rl_get_previous_history(int, int);
+EXPORT_API void		 rl_prep_terminal(int);
+EXPORT_API void		 rl_deprep_terminal(void);
+EXPORT_API int		 rl_read_init_file(const char *);
+EXPORT_API int		 rl_parse_and_bind(const char *);
+EXPORT_API int		 rl_variable_bind(const char *, const char *);
+EXPORT_API void		 rl_stuff_char(int);
+EXPORT_API int		 rl_add_defun(const char *, Function *, int);
+EXPORT_API HISTORY_STATE	*history_get_history_state(void);
+EXPORT_API void		 rl_get_screen_size(int *, int *);
+EXPORT_API void		 rl_set_screen_size(int, int);
+EXPORT_API char 		*rl_filename_completion_function (const char *, int);
+EXPORT_API int		 _rl_abort_internal(void);
+EXPORT_API int		 _rl_qsort_string_compare(char **, char **);
+EXPORT_API char 	       **rl_completion_matches(const char *, rl_compentry_func_t *);
+EXPORT_API void		 rl_forced_update_display(void);
+EXPORT_API int		 rl_set_prompt(const char *);
+EXPORT_API int		 rl_on_new_line(void);
 
 /*
  * The following are not implemented
  */
-int		 rl_kill_text(int, int);
-Keymap		 rl_get_keymap(void);
-void		 rl_set_keymap(Keymap);
-Keymap		 rl_make_bare_keymap(void);
-int		 rl_generic_bind(int, const char *, const char *, Keymap);
-int		 rl_bind_key_in_map(int, rl_command_func_t *, Keymap);
-void		 rl_cleanup_after_signal(void);
-void		 rl_free_line_state(void);
+EXPORT_API int		 rl_kill_text(int, int);
+EXPORT_API Keymap		 rl_get_keymap(void);
+EXPORT_API void		 rl_set_keymap(Keymap);
+EXPORT_API Keymap		 rl_make_bare_keymap(void);
+EXPORT_API int		 rl_generic_bind(int, const char *, const char *, Keymap);
+EXPORT_API int		 rl_bind_key_in_map(int, rl_command_func_t *, Keymap);
+EXPORT_API void		 rl_cleanup_after_signal(void);
+EXPORT_API void		 rl_free_line_state(void);
 #ifdef __cplusplus
 }
 #endif

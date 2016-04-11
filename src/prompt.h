@@ -42,6 +42,11 @@
 
 #include "histedit.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef Char    *(*el_pfunc_t)(EditLine *);
 
 typedef struct el_prompt_t {

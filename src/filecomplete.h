@@ -31,14 +31,19 @@
 #ifndef _FILECOMPLETE_H_
 #define _FILECOMPLETE_H_
 
-int fn_complete(EditLine *,
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
+EXPORT_API int fn_complete(EditLine *,
     char *(*)(const char *, int),
     char **(*)(const char *, int, int),
     const Char *, const Char *, const char *(*)(const char *), size_t,
     int *, int *, int *, int *);
 
-void fn_display_match_list(EditLine *, char **, size_t, size_t);
-char *fn_tilde_expand(const char *);
-char *fn_filename_completion_function(const char *, int);
+EXPORT_API void fn_display_match_list(EditLine *, char **, size_t, size_t);
+EXPORT_API char *fn_tilde_expand(const char *);
+EXPORT_API char *fn_filename_completion_function(const char *, int);
 
 #endif

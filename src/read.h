@@ -35,6 +35,11 @@
 #ifndef	_h_el_read
 #define	_h_el_read
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef int (*el_rfunc_t)(EditLine *, Char *);
 
 typedef struct el_read_t {
@@ -45,6 +50,6 @@ protected int		read_init(EditLine *);
 protected void		read_prepare(EditLine *);
 protected void		read_finish(EditLine *);
 protected int		el_read_setfn(EditLine *, el_rfunc_t);
-protected el_rfunc_t	el_read_getfn(EditLine *);
+EXPORT_API protected el_rfunc_t	el_read_getfn(EditLine *);
 
 #endif /* _h_el_read */

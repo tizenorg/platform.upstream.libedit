@@ -58,6 +58,11 @@
 	_DO(SIGWINCH)
 #define ALLSIGSNO	7
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef struct {
 	struct sigaction sig_action[ALLSIGSNO];
 	sigset_t sig_set;

@@ -78,34 +78,39 @@
 
 __BEGIN_DECLS
 char	*vis(char *, int, int, int);
-char	*nvis(char *, size_t, int, int, int);
 
-char	*svis(char *, int, int, int, const char *);
-char	*snvis(char *, size_t, int, int, int, const char *);
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
 
-int	strvis(char *, const char *, int);
-int	strnvis(char *, size_t, const char *, int);
+EXPORT_API char	*nvis(char *, size_t, int, int, int);
 
-int	strsvis(char *, const char *, int, const char *);
-int	strsnvis(char *, size_t, const char *, int, const char *);
+EXPORT_API char	*svis(char *, int, int, int, const char *);
+EXPORT_API char	*snvis(char *, size_t, int, int, int, const char *);
 
-int	strvisx(char *, const char *, size_t, int);
-int	strnvisx(char *, size_t, const char *, size_t, int);
-int 	strenvisx(char *, size_t, const char *, size_t, int, int *);
+EXPORT_API int	strvis(char *, const char *, int);
+EXPORT_API int	strnvis(char *, size_t, const char *, int);
 
-int	strsvisx(char *, const char *, size_t, int, const char *);
-int	strsnvisx(char *, size_t, const char *, size_t, int, const char *);
-int	strsenvisx(char *, size_t, const char *, size_t , int, const char *,
+EXPORT_API int	strsvis(char *, const char *, int, const char *);
+EXPORT_API int	strsnvis(char *, size_t, const char *, int, const char *);
+
+EXPORT_API int	strvisx(char *, const char *, size_t, int);
+EXPORT_API int	strnvisx(char *, size_t, const char *, size_t, int);
+EXPORT_API int 	strenvisx(char *, size_t, const char *, size_t, int, int *);
+
+EXPORT_API int	strsvisx(char *, const char *, size_t, int, const char *);
+EXPORT_API int	strsnvisx(char *, size_t, const char *, size_t, int, const char *);
+EXPORT_API int	strsenvisx(char *, size_t, const char *, size_t , int, const char *,
     int *);
 
-int	strunvis(char *, const char *);
-int	strnunvis(char *, size_t, const char *);
+EXPORT_API int	strunvis(char *, const char *);
+EXPORT_API int	strnunvis(char *, size_t, const char *);
 
-int	strunvisx(char *, const char *, int);
-int	strnunvisx(char *, size_t, const char *, int);
+EXPORT_API int	strunvisx(char *, const char *, int);
+EXPORT_API int	strnunvisx(char *, size_t, const char *, int);
 
 #ifndef __LIBC12_SOURCE__
-int	unvis(char *, int, int *, int);
+EXPORT_API int	unvis(char *, int, int *, int);
 #endif
 __END_DECLS
 

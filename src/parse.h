@@ -42,7 +42,12 @@
 
 protected int	 parse_line(EditLine *, const Char *);
 protected int	 parse__escape(const Char **);
-protected Char	*parse__string(Char *, const Char *);
+
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+EXPORT_API protected Char	*parse__string(Char *, const Char *);
 protected int	 parse_cmd(EditLine *, const Char *);
 
 #endif /* _h_el_parse */

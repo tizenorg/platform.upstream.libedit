@@ -42,6 +42,11 @@
 
 #include "histedit.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef struct {		/* Symbolic function key bindings	*/
 	const Char	*name;	/* name of the key			*/
 	int		 key;	/* Index in termcap table		*/

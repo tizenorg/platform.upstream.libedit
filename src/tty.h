@@ -449,6 +449,11 @@
 #define	MD_CHAR	4
 #define	MD_NN	5
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef struct {
 	const char	*t_name;
 	unsigned int	 t_setmask;
@@ -457,14 +462,14 @@ typedef struct {
 
 typedef unsigned char ttychar_t[NN_IO][C_NCC];
 
-protected int	tty_init(EditLine *);
-protected void	tty_end(EditLine *);
-protected int	tty_stty(EditLine *, int, const Char **);
-protected int	tty_rawmode(EditLine *);
-protected int	tty_cookedmode(EditLine *);
-protected int	tty_quotemode(EditLine *);
-protected int	tty_noquotemode(EditLine *);
-protected void	tty_bind_char(EditLine *, int);
+protected EXPORT_API int	tty_init(EditLine *);
+protected EXPORT_API void	tty_end(EditLine *);
+protected EXPORT_API int	tty_stty(EditLine *, int, const Char **);
+protected EXPORT_API int	tty_rawmode(EditLine *);
+protected EXPORT_API int	tty_cookedmode(EditLine *);
+protected EXPORT_API int	tty_quotemode(EditLine *);
+protected EXPORT_API int	tty_noquotemode(EditLine *);
+protected EXPORT_API void	tty_bind_char(EditLine *, int);
 
 typedef struct {
     ttyperm_t t_t;

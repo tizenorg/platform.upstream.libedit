@@ -277,7 +277,7 @@ out:
  * returns list of completions for text given
  * non-static for readline.
  */
-char ** completion_matches(const char *, char *(*)(const char *, int));
+EXPORT_API char ** completion_matches(const char *, char *(*)(const char *, int));
 char **
 completion_matches(const char *text, char *(*genfunc)(const char *, int))
 {
@@ -460,7 +460,7 @@ fn_complete(EditLine *el,
 		    cur_off - (int)len, cur_off);
 	} else
 		matches = 0;
-	if (!attempted_completion_function || 
+	if (!attempted_completion_function ||
 	    (over != NULL && !*over && !matches))
 		matches = completion_matches(
 		    ct_encode_string(temp, &el->el_scratch), complet_func);
@@ -509,7 +509,7 @@ fn_complete(EditLine *el,
 			}
 			/* matches[1] through matches[i-1] are available */
 			matches_num = (size_t)(i - 1);
-				
+
 			/* newline to get on next line from command line */
 			(void)fprintf(el->el_outfile, "\n");
 

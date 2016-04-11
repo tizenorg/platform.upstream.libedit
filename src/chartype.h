@@ -229,7 +229,12 @@ protected int ct_visual_width(Char);
 /* Turn the given character into the appropriate visual format, matching
  * the width given by ct_visual_width(). Returns the number of characters used
  * up, or -1 if insufficient space. Buffer length is in count of Char's. */
-protected ssize_t ct_visual_char(Char *, size_t, Char);
+ 
+ #ifndef EXPORT_API
+ #define EXPORT_API
+ #endif // EXPORT_API
+ 
+EXPORT_API protected ssize_t ct_visual_char(Char *, size_t, Char);
 
 /* Convert the given string into visual format, using the ct_visual_char()
  * function. Uses a static buffer, so not threadsafe. */

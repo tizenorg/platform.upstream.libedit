@@ -42,6 +42,11 @@
 
 #include "histedit.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef struct {
 	coord_t	r_cursor;	/* Refresh cursor position	*/
 	int	r_oldcv;	/* Vertical locations		*/

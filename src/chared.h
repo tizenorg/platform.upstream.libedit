@@ -59,6 +59,11 @@
  */
 #define	VI_MOVE
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 
 typedef struct c_macro_t {
 	int	  level;
@@ -146,14 +151,14 @@ typedef struct el_chared_t {
 protected int	 cv__isword(Int);
 protected int	 cv__isWord(Int);
 protected void	 cv_delfini(EditLine *);
-protected Char	*cv__endword(Char *, Char *, int, int (*)(Int));
+EXPORT_API protected Char	*cv__endword(Char *, Char *, int, int (*)(Int));
 protected int	 ce__isword(Int);
 protected void	 cv_undo(EditLine *);
 protected void	 cv_yank(EditLine *, const Char *, int);
-protected Char	*cv_next_word(EditLine*, Char *, Char *, int, int (*)(Int));
-protected Char	*cv_prev_word(Char *, Char *, int, int (*)(Int));
-protected Char	*c__next_word(Char *, Char *, int, int (*)(Int));
-protected Char	*c__prev_word(Char *, Char *, int, int (*)(Int));
+EXPORT_API protected Char	*cv_next_word(EditLine*, Char *, Char *, int, int (*)(Int));
+EXPORT_API protected Char	*cv_prev_word(Char *, Char *, int, int (*)(Int));
+EXPORT_API protected Char	*c__next_word(Char *, Char *, int, int (*)(Int));
+EXPORT_API protected Char	*c__prev_word(Char *, Char *, int, int (*)(Int));
 protected void	 c_insert(EditLine *, int);
 protected void	 c_delbefore(EditLine *, int);
 protected void	 c_delbefore1(EditLine *);

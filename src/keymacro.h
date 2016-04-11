@@ -40,6 +40,11 @@
 #ifndef _h_el_keymacro
 #define	_h_el_keymacro
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef union keymacro_value_t {
 	el_action_t	 cmd;	/* If it is a command the #	*/
 	Char		*str;	/* If it is a string...		*/
@@ -60,8 +65,8 @@ typedef struct el_keymacromacro_t {
 
 protected int keymacro_init(EditLine *);
 protected void keymacro_end(EditLine *);
-protected keymacro_value_t *keymacro_map_cmd(EditLine *, int);
-protected keymacro_value_t *keymacro_map_str(EditLine *, Char *);
+EXPORT_API protected keymacro_value_t *keymacro_map_cmd(EditLine *, int);
+EXPORT_API protected keymacro_value_t *keymacro_map_str(EditLine *, Char *);
 protected void keymacro_reset(EditLine *);
 protected int keymacro_get(EditLine *, Char *, keymacro_value_t *);
 protected void keymacro_add(EditLine *, const Char *, keymacro_value_t *, int);
@@ -70,7 +75,7 @@ protected int keymacro_delete(EditLine *, const Char *);
 protected void keymacro_print(EditLine *, const Char *);
 protected void keymacro_kprint(EditLine *, const Char *, keymacro_value_t *,
     int);
-protected size_t keymacro__decode_str(const Char *, char *, size_t,
+EXPORT_API protected size_t keymacro__decode_str(const Char *, char *, size_t,
     const char *);
 
 #endif /* _h_el_keymacro */

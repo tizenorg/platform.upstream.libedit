@@ -53,6 +53,11 @@ extern "C" {
 /*
  * ==== Editing ====
  */
+ 
+ #ifndef EXPORT_API
+ #define EXPORT_API
+ #endif // EXPORT_API
+ 
 
 typedef struct editline EditLine;
 
@@ -83,36 +88,36 @@ typedef struct lineinfo {
 /*
  * Initialization, cleanup, and resetting
  */
-EditLine	*el_init(const char *, FILE *, FILE *, FILE *);
-EditLine	*el_init_fd(const char *, FILE *, FILE *, FILE *,
+EXPORT_API EditLine	*el_init(const char *, FILE *, FILE *, FILE *);
+EXPORT_API EditLine	*el_init_fd(const char *, FILE *, FILE *, FILE *,
     int, int, int);
-void		 el_end(EditLine *);
-void		 el_reset(EditLine *);
+EXPORT_API void		 el_end(EditLine *);
+EXPORT_API void		 el_reset(EditLine *);
 
 /*
  * Get a line, a character or push a string back in the input queue
  */
-const char	*el_gets(EditLine *, int *);
-int		 el_getc(EditLine *, char *);
-void		 el_push(EditLine *, const char *);
+EXPORT_API const char	*el_gets(EditLine *, int *);
+EXPORT_API int		 el_getc(EditLine *, char *);
+EXPORT_API void		 el_push(EditLine *, const char *);
 
 /*
  * Beep!
  */
-void		 el_beep(EditLine *);
+EXPORT_API void		 el_beep(EditLine *);
 
 /*
  * High level function internals control
  * Parses argc, argv array and executes builtin editline commands
  */
-int		 el_parse(EditLine *, int, const char **);
+EXPORT_API int		 el_parse(EditLine *, int, const char **);
 
 /*
  * Low level editline access functions
  */
-int		 el_set(EditLine *, int, ...);
-int		 el_get(EditLine *, int, ...);
-unsigned char	_el_fn_complete(EditLine *, int);
+EXPORT_API int		 el_set(EditLine *, int, ...);
+EXPORT_API int		 el_get(EditLine *, int, ...);
+EXPORT_API unsigned char	_el_fn_complete(EditLine *, int);
 
 /*
  * el_set/el_get parameters
@@ -162,21 +167,21 @@ unsigned char	_el_fn_complete(EditLine *, int);
 /*
  * Source named file or $PWD/.editrc or $HOME/.editrc
  */
-int		el_source(EditLine *, const char *);
+EXPORT_API int		el_source(EditLine *, const char *);
 
 /*
  * Must be called when the terminal changes size; If EL_SIGNAL
  * is set this is done automatically otherwise it is the responsibility
  * of the application
  */
-void		 el_resize(EditLine *);
+EXPORT_API void		 el_resize(EditLine *);
 
 /*
  * User-defined function interface.
  */
-const LineInfo	*el_line(EditLine *);
-int		 el_insertstr(EditLine *, const char *);
-void		 el_deletestr(EditLine *, int);
+EXPORT_API const LineInfo	*el_line(EditLine *);
+EXPORT_API int		 el_insertstr(EditLine *, const char *);
+EXPORT_API void		 el_deletestr(EditLine *, int);
 
 
 /*
@@ -193,10 +198,10 @@ typedef struct HistEvent {
 /*
  * History access functions.
  */
-History *	history_init(void);
-void		history_end(History *);
+EXPORT_API History *	history_init(void);
+EXPORT_API void		history_end(History *);
 
-int		history(History *, HistEvent *, int, ...);
+EXPORT_API int		history(History *, HistEvent *, int, ...);
 
 #define	H_FUNC		 0	/* , UTSL		*/
 #define	H_SETSIZE	 1	/* , const int);	*/
@@ -236,12 +241,12 @@ typedef struct tokenizer Tokenizer;
 /*
  * String tokenization functions, using simplified sh(1) quoting rules
  */
-Tokenizer	*tok_init(const char *);
-void		 tok_end(Tokenizer *);
-void		 tok_reset(Tokenizer *);
-int		 tok_line(Tokenizer *, const LineInfo *,
+EXPORT_API Tokenizer	*tok_init(const char *);
+EXPORT_API void		 tok_end(Tokenizer *);
+EXPORT_API void		 tok_reset(Tokenizer *);
+EXPORT_API int		 tok_line(Tokenizer *, const LineInfo *,
 		    int *, const char ***, int *, int *);
-int		 tok_str(Tokenizer *, const char *,
+EXPORT_API int		 tok_str(Tokenizer *, const char *,
 		    int *, const char ***);
 
 /*
@@ -270,18 +275,18 @@ typedef struct lineinfow {
 	const wchar_t	*lastchar;
 } LineInfoW;
 
-const wchar_t	*el_wgets(EditLine *, int *);
-int		 el_wgetc(EditLine *, wchar_t *);
-void		 el_wpush(EditLine *, const wchar_t *);
+EXPORT_API const wchar_t	*el_wgets(EditLine *, int *);
+EXPORT_API int		 el_wgetc(EditLine *, wchar_t *);
+EXPORT_API void		 el_wpush(EditLine *, const wchar_t *);
 
-int		 el_wparse(EditLine *, int, const wchar_t **);
+EXPORT_API int		 el_wparse(EditLine *, int, const wchar_t **);
 
-int		 el_wset(EditLine *, int, ...);
-int		 el_wget(EditLine *, int, ...);
+EXPORT_API int		 el_wset(EditLine *, int, ...);
+EXPORT_API int		 el_wget(EditLine *, int, ...);
 
-int		 el_cursor(EditLine *, int);
-const LineInfoW	*el_wline(EditLine *);
-int		 el_winsertstr(EditLine *, const wchar_t *);
+EXPORT_API int		 el_cursor(EditLine *, int);
+EXPORT_API const LineInfoW	*el_wline(EditLine *);
+EXPORT_API int		 el_winsertstr(EditLine *, const wchar_t *);
 #define          el_wdeletestr  el_deletestr
 
 /*
@@ -294,10 +299,10 @@ typedef struct histeventW {
 
 typedef struct historyW HistoryW;
 
-HistoryW *	history_winit(void);
-void		history_wend(HistoryW *);
+EXPORT_API HistoryW *	history_winit(void);
+EXPORT_API void		history_wend(HistoryW *);
 
-int		history_w(HistoryW *, HistEventW *, int, ...);
+EXPORT_API int		history_w(HistoryW *, HistEventW *, int, ...);
 
 /*
  * ==== Tokenization ====
@@ -305,12 +310,12 @@ int		history_w(HistoryW *, HistEventW *, int, ...);
 typedef struct tokenizerW TokenizerW;
 
 /* Wide character tokenizer support */
-TokenizerW	*tok_winit(const wchar_t *);
-void		 tok_wend(TokenizerW *);
-void		 tok_wreset(TokenizerW *);
-int		 tok_wline(TokenizerW *, const LineInfoW *,
+EXPORT_API TokenizerW	*tok_winit(const wchar_t *);
+EXPORT_API void		 tok_wend(TokenizerW *);
+EXPORT_API void		 tok_wreset(TokenizerW *);
+EXPORT_API int		 tok_wline(TokenizerW *, const LineInfoW *,
 		    int *, const wchar_t ***, int *, int *);
-int		 tok_wstr(TokenizerW *, const wchar_t *,
+EXPORT_API int		 tok_wstr(TokenizerW *, const wchar_t *,
 		    int *, const wchar_t ***);
 
 #ifdef __cplusplus

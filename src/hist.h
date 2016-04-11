@@ -42,6 +42,11 @@
 
 #include "histedit.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 typedef int (*hist_fun_t)(void *, TYPE(HistEvent) *, int, ...);
 
 typedef struct el_history_t {
@@ -76,7 +81,7 @@ typedef struct el_history_t {
 
 protected int		hist_init(EditLine *);
 protected void		hist_end(EditLine *);
-protected el_action_t	hist_get(EditLine *);
+EXPORT_API protected el_action_t	hist_get(EditLine *);
 protected int		hist_set(EditLine *, hist_fun_t, void *);
 protected int		hist_command(EditLine *, int, const Char **);
 protected int		hist_enlargebuf(EditLine *, size_t, size_t);

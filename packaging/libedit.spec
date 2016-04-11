@@ -35,8 +35,8 @@ This package holds the development files for libedit.
 %setup -q -n %{name}-%{pkg_version}
 
 %build
-export CFLAGS+=" -flto "
-export CXXFLAGS+=" -flto "
+export CFLAGS+=" -flto  -fvisibility=hidden -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" "
+export CXXFLAGS+=" -flto  -fvisibility=hidden -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" "
 NOCONFIGURE=1 autoreconf -fiv
 %configure --disable-static --with-pic \
     --disable-silent-rules \
