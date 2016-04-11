@@ -35,6 +35,8 @@ This package holds the development files for libedit.
 %setup -q -n %{name}-%{pkg_version}
 
 %build
+export CFLAGS+=" -flto "
+export CXXFLAGS+=" -flto "
 NOCONFIGURE=1 autoreconf -fiv
 %configure --disable-static --with-pic \
     --disable-silent-rules \
@@ -53,7 +55,7 @@ make check
 
 %postun  -p /sbin/ldconfig
 
-%files 
+%files
 %defattr(-,root,root,-)
 %{_libdir}/libedit.so.*
 %{_mandir}/man5/editrc.5*
